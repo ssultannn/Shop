@@ -18,7 +18,7 @@ public class OpenApiConfig {
 
         return new OpenAPI()
             .info(new Info()
-                .title("Book and Student Crud")
+                .title("Сars Shop")
                 .version("1.0")
                 .description("Документация API для JWT логина и регистрации"))
             .addSecurityItem(new SecurityRequirement().addList(securitySchemeName))
