@@ -13,14 +13,18 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import az.developia.carsShop.dto.CarDto;
 import az.developia.carsShop.entity.Car;
 import az.developia.carsShop.service.CarService;
+import az.developia.carsShop.service.UserCarService;
 
 @RestController
 @RequestMapping("api/v1/cars")
 public class CarController {
 	@Autowired
 	private CarService carService;
+	@Autowired
+	private UserCarService userCarService;
 
 	@GetMapping
 	public List<Car> getAll() {
@@ -34,13 +38,13 @@ public class CarController {
 	}
 
 	@PostMapping
-	public Car сreateCar(@RequestBody Car car) {
-		return carService.saveCar(car);
+	public Car сreateCar(@RequestBody CarDto carDto) {
+		return userCarService.saveCar(carDto);
 	}
 
 	@DeleteMapping("/{id}")
 	public void deleteCar(@PathVariable Long id) {
-		carService.deleteCar(id);
+		userCarService.deleteCar(id);
 	}
 
 	@GetMapping("/search/{q}")
@@ -69,11 +73,15 @@ public class CarController {
 		return carService.getPriceDesc();
 
 	}
-	
-	
+
 	@PutMapping("/{id}")
-	public Car updatedCar(@PathVariable Long id,@RequestBody Car car) {
-		return carService.updateCar(id, car);
+	public Car updatedCar(@PathVariable Long id, @RequestBody Car car) {
+		return userCarService.updateCar(id, car);
+	}
+
+	@GetMapping("/my-cars")
+	public List<Car> myCars() {
+		return userCarService.getMyCar();
 	}
 
 }

@@ -22,13 +22,7 @@ public class CarService {
 		return carRepository.findById(id);
 	}
 
-	public Car saveCar(Car car) {
-		return carRepository.save(car);
-	}
 
-	public void deleteCar(Long id) {
-		carRepository.deleteById(id);
-	}
 
 	public List<Car> getByRating(Integer rating) {
 		return carRepository.findByRatingGreaterThanEqual(rating);
@@ -53,18 +47,8 @@ public class CarService {
 
 	}
 
-	public Car updateCar(Long id, Car updatedCar) {
-		Car car = carRepository.findById(id).orElseThrow(() -> new RuntimeException("car not found"));
-		car.setBrand(updatedCar.getBrand());
-		car.setModel(updatedCar.getModel());
-		car.setType(updatedCar.getType());
-		car.setColor(updatedCar.getColor());
-		car.setDescription(updatedCar.getDescription());
-		car.setPrice(updatedCar.getPrice());
-		car.setImgUrl(updatedCar.getImgUrl());
-		car.setRating(updatedCar.getRating());
-		car.setOwnerId(updatedCar.getOwnerId());
-		return carRepository.save(car);
-	}
+
+	
+
 
 }
