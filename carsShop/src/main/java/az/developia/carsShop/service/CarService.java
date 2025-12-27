@@ -35,7 +35,6 @@ public class CarService {
 
 	public List<Car> getByType(String type) {
 		return carRepository.findByType(type);
-
 	}
 
 	public List<Car> getPriceAsc() {

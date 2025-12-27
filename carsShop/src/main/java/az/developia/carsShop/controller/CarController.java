@@ -28,6 +28,7 @@ public class CarController {
 
 	@GetMapping
 	public List<Car> getAll() {
+
 		return carService.getAll();
 
 	}
